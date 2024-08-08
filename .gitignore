@@ -9,3 +9,8 @@
 *.hex
 *.bin
 *.uf2
+
+.venv
+szczys_corne_mx.json
+szczys_corne_mx.yaml
+
