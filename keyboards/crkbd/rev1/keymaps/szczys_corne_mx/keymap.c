@@ -33,19 +33,28 @@ enum custom_keycodes {
 #define NUM_KCF  LT(_NUMPAD, KC_F)
 
 enum combos {
+  ER_PLUS,
   DF_MINUS,
+  CV_UNDER,
+  FG_EQL,
   QP_PRTSCR_SFT,
   ZP_PRTSCR,
   ESC_ALT_NUMLOCK,
 };
 
+const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM df_combo[] = {KC_D, NUM_KCF, COMBO_END};
+const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
+const uint16_t PROGMEM fg_combo[] = {NUM_KCF, KC_G, COMBO_END};
 const uint16_t PROGMEM qp_combo[] = {KC_Q, KC_P, COMBO_END};
 const uint16_t PROGMEM zp_combo[] = {KC_Z, KC_P, COMBO_END};
 const uint16_t PROGMEM esc_alt_combo[] = {KC_ESC, KC_LALT, COMBO_END};
 
 combo_t key_combos[] = {
+  [ER_PLUS]    = COMBO(er_combo, KC_PLUS),
   [DF_MINUS]    = COMBO(df_combo, KC_MINS),
+  [CV_UNDER]    = COMBO(cv_combo, KC_UNDS),
+  [FG_EQL]    = COMBO(fg_combo, KC_EQL),
   [QP_PRTSCR_SFT]    = COMBO(qp_combo, LSFT(KC_PSCR)),
   [ZP_PRTSCR]    = COMBO(zp_combo, KC_PSCR),
   [ESC_ALT_NUMLOCK]    = COMBO(esc_alt_combo, TG(_NUMPAD)),
