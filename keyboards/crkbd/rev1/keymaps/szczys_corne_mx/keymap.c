@@ -7,6 +7,8 @@
 #define RGB_LIGHT_TIMEOUT_MS 300000
 static bool _leds_on = true;
 static uint32_t _leds_timer = 0;
+static bool _layer_has_changed = true;
+static layer_state_t _last_layer = 1;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -123,6 +125,11 @@ void matrix_scan_user(void) {
   }
 }
 
+layer_state_t layer_state_set_user(layer_state_t state) {
+    _layer_has_changed = true;
+    return state;
+}
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_split_3x6_3(
   //,-----------------------------------------------------.                    ,-----------------------------------------------------.
@@ -222,33 +229,39 @@ void oled_render_logo(void) {
 }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        oled_write_P(PSTR("Layer: "), false);
+    if (_layer_has_changed) {
+        _layer_has_changed = false;
+        if (get_highest_layer(layer_state) != _last_layer) {
+            _last_layer = get_highest_layer(layer_state);
 
-        switch (get_highest_layer(layer_state)) {
-            case _QWERTY:
-                oled_write_P(PSTR("Default\n"), false);
-                break;
-            case _LOWER:
-                oled_write_P(PSTR("Lower\n"), false);
-                break;
-            case _RAISE:
-                oled_write_P(PSTR("Raise\n"), false);
-                break;
-            case _NUMPAD:
-                oled_write_P(PSTR("Numpad\n"), false);
-                break;
-            case _FUNC:
-                oled_write_P(PSTR("Function\n"), false);
-                break;
-            default:
-                // Or use the write_ln shortcut over adding '\n' to the end of your string
-                oled_write_ln_P(PSTR("Undefined"), false);
+            switch (get_highest_layer(layer_state)) {
+                case _QWERTY:
+                    oled_write_P(PSTR("Layer: "), false);
+                    oled_write_P(PSTR("Qwerty\n"), false);
+                    break;
+                case _LOWER:
+                    oled_write_P(PSTR("Layer: "), false);
+                    oled_write_P(PSTR("Lower\n"), false);
+                    break;
+                case _RAISE:
+                    oled_write_P(PSTR("Layer: "), false);
+                    oled_write_P(PSTR("Raise\n"), false);
+                    break;
+                case _NUMPAD:
+                    oled_write_P(PSTR("Layer: "), false);
+                    oled_write_P(PSTR("Numpad\n"), false);
+                    break;
+                case _FUNC:
+                    oled_write_P(PSTR("Layer: "), false);
+                    oled_write_P(PSTR("Function\n"), false);
+                    break;
+                default:
+                    // Or use the write_ln shortcut over adding '\n' to the end of your string
+                    oled_write_P(PSTR("Layer: "), false);
+                    oled_write_ln_P(PSTR("Undefined"), false);
+            }
         }
-    } else {
-        oled_render_logo();  // Renders a static logo
     }
-
     return false;
 }
 
