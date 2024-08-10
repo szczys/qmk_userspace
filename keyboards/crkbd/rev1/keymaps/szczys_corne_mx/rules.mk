@@ -1,5 +1,8 @@
 LAYOUTS = split_3x6_3
 
+# Build for the rp2040
+CONVERT_TO=promicro_rp2040
+
 # markstos: enable media keys
 EXTRAKEY_ENABLE = yes
 

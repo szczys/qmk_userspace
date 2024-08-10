@@ -5,5 +5,5 @@ Adapted from layout by markstos
 ## Build
 
 ```
-qmk compile -kb crkbd -km szczys -e CONVERT_TO=promicro_rp2040
+qmk compile -kb crkbd/rev1 -km szczys_corne_mx
 ```

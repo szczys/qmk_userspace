@@ -11,7 +11,7 @@ Stosberg](https://mark.stosberg.com/markstos-corne-3x5-1-keyboard-layout/).
 ## Compile
 
 ```
-qmk compile -kb crkbd/rev1 -km szczys_corne_mx -e CONVERT_TO=promicro_rp2040
+qmk compile -kb crkbd/rev1 -km szczys_corne_mx
 ```
 
 ## Visualize keymap
