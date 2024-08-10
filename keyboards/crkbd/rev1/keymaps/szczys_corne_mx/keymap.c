@@ -3,6 +3,11 @@
 // SPDX-License-Identifier: GPL-2.0-or-later
 #include QMK_KEYBOARD_H
 
+// RGB Light off timer
+#define RGB_LIGHT_TIMEOUT_MS 300000
+static bool _leds_on = true;
+static uint32_t _leds_timer = 0;
+
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
 // Layer names don't all need to be of the same length, obviously, and you can also skip them
@@ -77,6 +82,14 @@ tap_dance_action_t tap_dance_actions[] = {
 bool is_alt_tab_active = false; // ADD this near the beginning of keymap.c
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    if (record->event.pressed) {
+        _leds_timer = timer_read32();
+        if (!_leds_on) {
+            rgblight_enable_noeeprom();
+            _leds_on = true;
+        }
+    }
+
   switch (keycode) { // This will do most of the grunt work with the keycodes.
     case ALT_TAB:
       if (record->event.pressed) {
@@ -91,6 +104,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
       break;
   }
   return true;
+}
+
+void housekeeping_task_user(void) {
+    if ((_leds_on) && (timer_elapsed32(_leds_timer) > RGB_LIGHT_TIMEOUT_MS)) {
+        rgblight_disable_noeeprom();
+        _leds_on = false;
+    }
 }
 
 void matrix_scan_user(void) {
