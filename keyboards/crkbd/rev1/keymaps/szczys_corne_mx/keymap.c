@@ -43,8 +43,8 @@ enum custom_keycodes {
 enum combos {
   ER_PLUS,
   DF_MINUS,
-  CV_UNDER,
-  FG_EQL,
+  CV_EQL,
+  FG_UNDER,
   QP_PRTSCR_SFT,
   ZP_PRTSCR,
   ESC_ALT_NUMLOCK,
@@ -61,8 +61,8 @@ const uint16_t PROGMEM esc_alt_combo[] = {KC_ESC, KC_LALT, COMBO_END};
 combo_t key_combos[] = {
   [ER_PLUS]    = COMBO(er_combo, KC_PLUS),
   [DF_MINUS]    = COMBO(df_combo, KC_MINS),
-  [CV_UNDER]    = COMBO(cv_combo, KC_UNDS),
-  [FG_EQL]    = COMBO(fg_combo, KC_EQL),
+  [CV_EQL]    = COMBO(cv_combo, KC_EQL),
+  [FG_UNDER]    = COMBO(fg_combo, KC_UNDS),
   [QP_PRTSCR_SFT]    = COMBO(qp_combo, LSFT(KC_PSCR)),
   [ZP_PRTSCR]    = COMBO(zp_combo, KC_PSCR),
   [ESC_ALT_NUMLOCK]    = COMBO(esc_alt_combo, TG(_NUMPAD)),
