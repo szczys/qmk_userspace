@@ -41,6 +41,7 @@ enum custom_keycodes {
 #define NUM_KCF  LT(_NUMPAD, KC_F)
 
 enum combos {
+  AS_TILDE,
   ER_PLUS,
   DF_MINUS,
   CV_EQL,
@@ -50,6 +51,7 @@ enum combos {
   ESC_ALT_NUMLOCK,
 };
 
+const uint16_t PROGMEM as_combo[] = {KC_A, KC_S, COMBO_END};
 const uint16_t PROGMEM er_combo[] = {KC_E, KC_R, COMBO_END};
 const uint16_t PROGMEM df_combo[] = {KC_D, NUM_KCF, COMBO_END};
 const uint16_t PROGMEM cv_combo[] = {KC_C, KC_V, COMBO_END};
@@ -59,6 +61,7 @@ const uint16_t PROGMEM zp_combo[] = {KC_Z, KC_P, COMBO_END};
 const uint16_t PROGMEM esc_alt_combo[] = {KC_ESC, KC_LALT, COMBO_END};
 
 combo_t key_combos[] = {
+  [AS_TILDE]    = COMBO(as_combo, KC_TILD),
   [ER_PLUS]    = COMBO(er_combo, KC_PLUS),
   [DF_MINUS]    = COMBO(df_combo, KC_MINS),
   [CV_EQL]    = COMBO(cv_combo, KC_EQL),
