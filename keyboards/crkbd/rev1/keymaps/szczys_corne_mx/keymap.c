@@ -9,7 +9,7 @@
 #define RGB_LIGHT_TIMEOUT_MS 300000
 static bool _leds_on = true;
 static uint32_t _leds_timer = 0;
-static bool _layer_has_changed = true;
+static layer_state_t _layer_last = 1;
 
 // Each layer gets a name for readability, which is then used in the keymap matrix below.
 // The underscores don't mean anything - you can have a layer called STUFF or any other name.
@@ -124,11 +124,6 @@ void matrix_scan_user(void) {
       is_alt_tab_active = false;
     }
   }
-}
-
-layer_state_t layer_state_set_user(layer_state_t state) {
-    _layer_has_changed = true;
-    return state;
 }
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -429,13 +424,9 @@ void show_layer(layer_state_t last_layer) {
 }
 
 bool oled_task_user(void) {
-    if (is_keyboard_master()) {
-        if (_layer_has_changed) {
-            _layer_has_changed = false;
-            show_layer(get_highest_layer(layer_state));
-        }
-    } else {
-        oled_render_logo();
+    if (_layer_last != get_highest_layer(layer_state)) {
+        _layer_last = get_highest_layer(layer_state);
+        show_layer(_layer_last);
     }
 
     return false;

@@ -15,10 +15,9 @@ This is the C configuration file for the keymap
 
 #define MASTER_LEFT
 // #define MASTER_RIGHT
-// #define EE_HANDS
 
-//#define SSD1306OLED
-
+// Enable layer awareness to update both OLEDs when layers change
+#define SPLIT_LAYER_STATE_ENABLE
 
 // By default, when holding a dual-function key shortly after tapping it, the
 // tapped key will begin repeating. This is handy for fast typists when typing
