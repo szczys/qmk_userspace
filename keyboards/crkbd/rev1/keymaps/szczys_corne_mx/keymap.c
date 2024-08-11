@@ -77,8 +77,8 @@ enum {
 // Tap Dance definitions
 tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_OP_BRC] = ACTION_TAP_DANCE_DOUBLE(LSFT(KC_LBRC), KC_LBRC),
-    [TD_CL_BRC] = ACTION_TAP_DANCE_DOUBLE(LSFT(KC_RBRC), KC_RBRC),
+    [TD_OP_BRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
+    [TD_CL_BRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
 };
 
 // Super alt-tab
