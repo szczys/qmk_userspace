@@ -78,10 +78,36 @@ enum {
 };
 
 // Tap Dance definitions
+void dance_open_brackets(tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1:
+            tap_code16(KC_LBRC);
+            break;
+        case 2:
+            tap_code16(KC_LCBR);
+            break;
+        default:
+            tap_code16(KC_LT);
+    }
+}
+
+void dance_close_brackets(tap_dance_state_t *state, void *user_data) {
+    switch (state->count) {
+        case 1:
+            tap_code16(KC_RBRC);
+            break;
+        case 2:
+            tap_code16(KC_RCBR);
+            break;
+        default:
+            tap_code16(KC_GT);
+    }
+}
+
 tap_dance_action_t tap_dance_actions[] = {
     // Tap once for Escape, twice for Caps Lock
-    [TD_OP_BRC] = ACTION_TAP_DANCE_DOUBLE(KC_LBRC, KC_LCBR),
-    [TD_CL_BRC] = ACTION_TAP_DANCE_DOUBLE(KC_RBRC, KC_RCBR),
+    [TD_OP_BRC] = ACTION_TAP_DANCE_FN(dance_open_brackets),
+    [TD_CL_BRC] =ACTION_TAP_DANCE_FN(dance_close_brackets),
 };
 
 // Super alt-tab
@@ -148,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_1,    KC_2,   KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_VOLD, KC_VOLU, C(S(KC_C)),C(S(KC_V)), KC_MPLY,                XXXXXXX, TD(TD_OP_BRC), TD(TD_CL_BRC), KC_LT  , KC_GT, _______ ,
+      _______, KC_VOLD, KC_VOLU, C(S(KC_C)),C(S(KC_V)), KC_MPLY,                XXXXXXX, TD(TD_OP_BRC), TD(TD_CL_BRC), _______, _______, _______ ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS,  KC_TRNS, LOWER,    KC_F12,  KC_TRNS, KC_COLON
                                       //`--------------------------'  `--------------------------'
