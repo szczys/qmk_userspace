@@ -147,7 +147,7 @@ void housekeeping_task_user(void) {
 
 void matrix_scan_user(void) {
   if (is_alt_tab_active) {
-    if (!layer_state_is(_RAISE)) {
+    if (!layer_state_is(_LOWER)) {
       // Release LALT when layer key is released
       unregister_code(KC_LALT);
       is_alt_tab_active = false;
@@ -174,7 +174,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_1,    KC_2,   KC_3,    KC_4,    KC_5,                         KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______ ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, KC_VOLD, KC_VOLU, C(S(KC_C)),C(S(KC_V)), KC_MPLY,                XXXXXXX, TD(TD_OP_BRC), TD(TD_CL_BRC), _______, _______, _______ ,
+      _______, KC_VOLD, KC_VOLU, C(S(KC_C)),C(S(KC_V)), KC_MPLY,                ALT_TAB, LALT(KC_J),LALT(KC_K), _______, _______, _______ ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                           KC_TRNS,  KC_TRNS, LOWER,    KC_F12,  KC_TRNS, KC_COLON
                                       //`--------------------------'  `--------------------------'
@@ -186,7 +186,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       _______, KC_HOME, KC_END , KC_MINS, KC_EQL , KC_PGDN,                      KC_LEFT, KC_DOWN, KC_UP  , KC_RGHT, KC_APP ,_______ ,
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
-      _______, _______, _______, KC_TILD,  KC_GRV, ALT_TAB,                     C(KC_SPC), LALT(KC_J),LALT(KC_K), KC_PIPE, KC_BSLS,_______ ,
+      _______, _______, _______, KC_TILD,  KC_GRV, XXXXXXX,                     C(KC_SPC), TD(TD_OP_BRC), TD(TD_CL_BRC), KC_PIPE, KC_BSLS,_______ ,
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
                                      LCTL(KC_ENT), KC_TRNS, XXXXXXX,    RAISE  , KC_TRNS, KC_TRNS
                                       //`--------------------------'  `--------------------------'
