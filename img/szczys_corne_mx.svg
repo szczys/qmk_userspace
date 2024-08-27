@@ -477,28 +477,29 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(532, 154)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">
+<tspan x="0" dy="-0.6em">ALT</tspan><tspan x="0" dy="1.2em">TAB</tspan>
+</text>
 </g>
 <g transform="translate(588, 147)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-1.2em">TD(TD</tspan><tspan x="0" dy="1.2em">OP</tspan>
-<tspan x="0" dy="1.2em">BRC)</tspan>
+<tspan x="0" dy="-0.6em">Alt+</tspan><tspan x="0" dy="1.2em">J</tspan>
 </text>
 </g>
 <g transform="translate(644, 140)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-1.2em">TD(TD</tspan><tspan x="0" dy="1.2em">CL</tspan>
-<tspan x="0" dy="1.2em">BRC)</tspan>
+<tspan x="0" dy="-0.6em">Alt+</tspan><tspan x="0" dy="1.2em">K</tspan>
 </text>
 </g>
-<g transform="translate(700, 147)" class="key keypos-33">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">&lt;</text>
+<g transform="translate(700, 147)" class="key trans keypos-33">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
+<text x="0" y="0" class="key trans tap">▽</text>
 </g>
-<g transform="translate(756, 161)" class="key keypos-34">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">&gt;</text>
+<g transform="translate(756, 161)" class="key trans keypos-34">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
+<text x="0" y="0" class="key trans tap">▽</text>
 </g>
 <g transform="translate(812, 161)" class="key trans keypos-35">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
@@ -671,13 +672,13 @@ path.combo { stroke: #7f7f7f; }
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
 <text x="0" y="0" class="key trans tap">▽</text>
 </g>
-<g transform="translate(84, 161)" class="key trans keypos-25">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(84, 161)" class="key keypos-25">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">&lt;</text>
 </g>
-<g transform="translate(140, 147)" class="key trans keypos-26">
-<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key trans"/>
-<text x="0" y="0" class="key trans tap">▽</text>
+<g transform="translate(140, 147)" class="key keypos-26">
+<rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
+<text x="0" y="0" class="key tap">&gt;</text>
 </g>
 <g transform="translate(196, 140)" class="key keypos-27">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -689,9 +690,6 @@ path.combo { stroke: #7f7f7f; }
 </g>
 <g transform="translate(308, 154)" class="key keypos-29">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
-<text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">ALT</tspan><tspan x="0" dy="1.2em">TAB</tspan>
-</text>
 </g>
 <g transform="translate(532, 154)" class="key keypos-30">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
@@ -702,13 +700,15 @@ path.combo { stroke: #7f7f7f; }
 <g transform="translate(588, 147)" class="key keypos-31">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">Alt+</tspan><tspan x="0" dy="1.2em">J</tspan>
+<tspan x="0" dy="-1.2em">TD(TD</tspan><tspan x="0" dy="1.2em">OP</tspan>
+<tspan x="0" dy="1.2em">BRC)</tspan>
 </text>
 </g>
 <g transform="translate(644, 140)" class="key keypos-32">
 <rect rx="6" ry="6" x="-26" y="-26" width="52" height="52" class="key"/>
 <text x="0" y="0" class="key tap">
-<tspan x="0" dy="-0.6em">Alt+</tspan><tspan x="0" dy="1.2em">K</tspan>
+<tspan x="0" dy="-1.2em">TD(TD</tspan><tspan x="0" dy="1.2em">CL</tspan>
+<tspan x="0" dy="1.2em">BRC)</tspan>
 </text>
 </g>
 <g transform="translate(700, 147)" class="key keypos-33">
