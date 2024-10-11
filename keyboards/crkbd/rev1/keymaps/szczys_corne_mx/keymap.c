@@ -33,6 +33,8 @@ enum custom_keycodes {
   ALT_TAB,
 };
 
+#define i3 0 // Pseudo layer name
+
 // Short names for complex keys
 #define OSM_AGR  OSM(MOD_RALT)
 #define GUI_ENT  GUI_T(KC_ENT)
@@ -110,8 +112,8 @@ tap_dance_action_t tap_dance_actions[] = {
     [TD_CL_BRC] =ACTION_TAP_DANCE_FN(dance_close_brackets),
 };
 
-// Super alt-tab
-bool is_alt_tab_active = false; // ADD this near the beginning of keymap.c
+bool is_alt_tab_active = false;// Super alt-tab
+bool is_lower_lgui_active = false; // i3 modifer (_LOWER layer + LGUI)
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     if (record->event.pressed) {
@@ -132,6 +134,21 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         register_code(KC_TAB);
       } else {
         unregister_code(KC_TAB);
+      }
+      break;
+    case LT(i3, KC_SPC):
+      if (record->event.pressed) {
+        if (!record->tap.count && record->event.pressed) {
+          is_lower_lgui_active = true;
+          layer_on(_LOWER);
+          add_mods(MOD_BIT(KC_LGUI));
+        }
+      } else {
+        if (is_lower_lgui_active) {
+            is_lower_lgui_active = false;
+            del_mods(MOD_BIT(KC_LGUI));
+            layer_off(_LOWER);
+        }
       }
       break;
   }
@@ -164,7 +181,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   //|--------+--------+--------+--------+--------+--------|                    |--------+--------+--------+--------+--------+--------|
       KC_LSFT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,                     KC_N    ,KC_M    ,KC_COMM ,KC_DOT  ,KC_SLSH ,MO(_FUNC),
   //|--------+--------+--------+--------+--------+--------+--------|  |--------+--------+--------+--------+--------+--------+--------|
-                                          KC_LCTL, GUI_ENT, LOW_TAB,   RSE_BSP ,KC_SPC  ,KC_LSFT
+                                          KC_LCTL, GUI_ENT, LOW_TAB,   RSE_BSP ,LT(i3,KC_SPC),KC_LSFT
                                       //`--------------------------'  `--------------------------'
   ),
 
