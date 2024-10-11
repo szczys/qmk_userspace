@@ -5,6 +5,22 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2024-10-11
+
+### Added
+
+- Holding shift now enables i3 functionality (holds GUI and turns on numbers
+  layer)
+
+### Changed
+
+- GT/LT (< >) now available as triple tap on brackets keys
+- GT/LT (< >) available on Z X of Raise layer
+
+### Fixed
+
+- Numpad numbers now work
+
 ## [0.3.0] - 2024-08-23
 
 ### Added
