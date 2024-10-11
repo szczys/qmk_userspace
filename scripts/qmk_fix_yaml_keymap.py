@@ -96,6 +96,10 @@ def update_and_write_keymap(keymap: list, outfile=keymap_yaml):
                 replacement = get_LT_string(line)
                 print_replacement('layer tap macro', replacement)
 
+            elif 'h: L0' in line:
+                replacement = line.replace("h: L0", "h: i3")
+                print_replacement('psuedo-layer name', replacement)
+
             else:
                 idx = has_inline_pattern(line)
                 if idx:
